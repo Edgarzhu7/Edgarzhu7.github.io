@@ -4,14 +4,15 @@ import { Github, Linkedin, Mail, ArrowUpRight, Play, Camera } from 'lucide-react
 import Link from 'next/link';
 import Image from 'next/image';
 import { PhotoGallery } from './components/PhotoGallery';
+import { FadeIn } from './components/FadeIn';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground relative">
+    <div className="min-h-screen bg-background/80 text-foreground relative">
       
       {/* Background Image - Fixed */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <Image 
+        <Image
           src="/background.png" 
           alt="Background" 
           fill
@@ -22,7 +23,7 @@ export default function Home() {
       </div>
 
       {/* Top Navigation - Glassmorphism */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <header className="sticky top-0 z-50 bg-background/60 backdrop-blur-md border-b border-border/40">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="font-serif font-medium text-xl tracking-tight flex items-center gap-2">
             <div className="w-3 h-3 bg-accent rounded-full shadow-sm" />
@@ -40,18 +41,18 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto border-l border-r border-border relative z-10 bg-background/60 backdrop-blur-sm">
+      <main className="max-w-7xl mx-auto border-l border-r border-border/40 relative z-10 bg-background/40 backdrop-blur-sm">
         
         {/* Hero Section */}
-        <section className="grid md:grid-cols-2 gap-0 border-b border-border">
-          <div className="p-10 md:p-20 flex flex-col justify-center space-y-8 border-b md:border-b-0 border-border bg-background/40">
+        <section className="grid md:grid-cols-2 gap-0 border-b border-border/40">
+          <div className="p-10 md:p-20 flex flex-col justify-center space-y-8 border-b md:border-b-0 border-border/40 bg-background/30">
             <div className="space-y-6 animate-fade-in">
               <h1 className="font-serif text-5xl md:text-7xl leading-[1.1] text-foreground drop-shadow-sm">
                 Syntax. <br/>
                 Systems. <br/>
                 <span className="italic text-accent/90">Soul.</span> 
                 
-              </h1>
+          </h1>
               <div className="space-y-3 max-w-md text-muted-foreground">
                 <p className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
@@ -64,8 +65,8 @@ export default function Home() {
                 <p className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
                   Creating scalable startups
-                </p>
-              </div>
+          </p>
+        </div>
             </div>
             <div className="flex gap-4 animate-fade-in" style={{ animationDelay: '100ms' }}>
                <Link href="dejiazhu@umich.edu" className="group flex items-center gap-2 px-5 py-2.5 bg-foreground text-background rounded-full text-sm font-medium hover:bg-foreground/90 transition-all shadow-lg hover:shadow-xl">
@@ -79,12 +80,12 @@ export default function Home() {
           </div>
           
           {/* Hero Image & Bio - Right Side */}
-          <div className="relative min-h-[500px] md:h-auto bg-muted/30 flex flex-col items-center justify-center p-10 md:p-16 gap-8 border-l md:border-l border-border text-center md:text-left">
+          <div className="relative min-h-[500px] md:h-auto bg-muted/20 flex flex-col items-center justify-center p-10 md:p-16 gap-8 border-l md:border-l border-border/40 text-center md:text-left">
             
             {/* Profile Image */}
             <div className="relative z-10 w-40 h-40 group shrink-0">
               <div className="absolute inset-0 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/20 transition-colors duration-500" />
-              <Image 
+            <Image
                 src="/profile.jpg" 
                 alt="Edgar Zhu" 
                 fill
@@ -121,8 +122,9 @@ export default function Home() {
         </section>
 
         {/* Introduction Grid - Stronger Borders */}
-        <section className="grid md:grid-cols-3 border-b border-border divide-y md:divide-y-0 md:divide-x divide-border bg-background/80">
-          <div className="p-10 space-y-4 hover:bg-white/60 dark:hover:bg-black/40 transition-colors">
+        <FadeIn delay={0.2}>
+        <section className="grid md:grid-cols-3 border-b border-border/40 divide-y md:divide-y-0 md:divide-x divide-border/40 bg-background/40">
+          <div className="p-10 space-y-4 hover:bg-white/40 dark:hover:bg-black/40 transition-colors">
             <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
               <span className="font-serif text-lg italic">01</span>
             </div>
@@ -150,15 +152,17 @@ export default function Home() {
             </p>
           </div>
         </section>
+        </FadeIn>
 
         {/* Selected Research */}
-        <section id="research" className="border-b border-border bg-background/60">
-          <div className="p-10 md:p-12 border-b border-border">
+        <FadeIn>
+        <section id="research" className="border-b border-border/40 bg-background/30">
+          <div className="p-10 md:p-12 border-b border-border/40">
             <span className="text-xs font-mono uppercase tracking-wider text-accent">Selected Works</span>
             <h2 className="font-serif text-4xl mt-2">Research & Analysis</h2>
           </div>
           
-          <div className="divide-y divide-border">
+          <div className="divide-y divide-border/40">
             <ResearchItem 
               title="Decoding Smartphone Prices: The Evolving Value of Features"
               category="Economics & ML"
@@ -193,8 +197,10 @@ export default function Home() {
             />
           </div>
         </section>
+        </FadeIn>
 
         {/* Side Projects */}
+        <FadeIn>
         <section id="projects" className="grid md:grid-cols-2 border-b border-border">
            <div className="p-10 md:p-12 border-b md:border-b-0 border-r border-border bg-background/40">
               <span className="text-xs font-mono uppercase tracking-wider text-accent">Engineering</span>
@@ -205,6 +211,12 @@ export default function Home() {
                   desc="AI startup integrating multi-modal generative models to produce custom songs and videos."
                   tags={["Founder", "Generative AI", "Startup"]}
                   link="https://www.vizasound.com/"
+                />
+                <ProjectCard 
+                  title="SmartCut"
+                  desc="AI-powered video editing tool that automatically detects silence segments and provides interactive cutting workflow."
+                  tags={["React", "Python", "OpenAI Whisper"]}
+                  link="https://smartcut-frontend.onrender.com/"
                 />
               </div>
            </div>
@@ -227,14 +239,17 @@ export default function Home() {
               </div>
            </div>
         </section>
+        </FadeIn>
 
         {/* Photography */}
+        <FadeIn>
         <section id="photography" className="p-6 md:p-10 bg-background/40">
           <div className="flex items-center justify-between mb-8">
             <h2 className="font-serif text-3xl">Photography</h2>
-          </div>
+        </div>
           <PhotoGallery />
         </section>
+        </FadeIn>
 
       </main>
       
