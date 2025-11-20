@@ -47,12 +47,12 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center text-slate-400">
                 <span className="text-sm font-medium">Add profile.jpg</span>
               </div>
-              <Image 
+        <Image
                 src="/profile.jpg" 
                 alt="Edgar Zhu" 
                 fill
-                className="object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                priority
+                className="object-cover opacity-100 group-hover:scale-105 transition-transform duration-500"
+          priority
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
@@ -194,9 +194,9 @@ function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode
       href={href}
       className="p-3 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm hover:bg-white dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md text-slate-600 dark:text-slate-400 hover:scale-110"
       aria-label={label}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+            target="_blank"
+            rel="noopener noreferrer"
+          >
       {icon}
     </Link>
   );
