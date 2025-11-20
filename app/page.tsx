@@ -3,6 +3,7 @@
 import { Github, Linkedin, Mail, ArrowUpRight, Play, Camera } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { PhotoGallery } from './components/PhotoGallery';
 
 export default function Home() {
   return (
@@ -159,16 +160,36 @@ export default function Home() {
           
           <div className="divide-y divide-border">
             <ResearchItem 
-              title="AI-Driven Market Analysis"
+              title="Decoding Smartphone Prices: The Evolving Value of Features"
               category="Economics & ML"
-              year="2024"
-              description="Investigating the impact of sentiment analysis on high-frequency trading algorithms using NLP models."
+              year="Dec 2024"
+              role="Independent Researcher"
+              description="Trained LASSO models to predict smartphone prices and computed Hedonic Jevons Indices, revealing heterogeneous trends in hardware feature importance. Automated data collection via Keepa API and custom Amazon crawlers."
+              link="https://github.com/Edgarzhu7/Decoding-Smartphone-Prices"
             />
             <ResearchItem 
-              title="Computational Game Theory"
-              category="Computer Science"
-              year="2023"
-              description="Developing simulation models to understand cooperative behavior in decentralized networks."
+              title="Predicting Social Media's Impact on Mental Health"
+              category="Machine Learning"
+              year="Feb 2025"
+              role="Research Lead"
+              description="Led end-to-end ML research predicting addiction levels from behavioral data. Benchmarked six models (LSTM, FCNet, SVM, etc.), achieving 91% accuracy with LSTM using PyTorch."
+              link="https://github.com/Edgarzhu7/Predicting-social-medias-impact"
+            />
+            <ResearchItem 
+              title="Modeling Momentum in Soccer Using Markov Chains"
+              category="Sports Analytics"
+              year="Jan 2025"
+              role="Research Lead"
+              description="Constructed Markov Chain transition matrices from 142 professional matches to model state-to-state dynamics. Analyzed how shot events and possession resets impact goal transitions."
+              link="https://github.com/Edgarzhu7?tab=repositories"
+            />
+            <ResearchItem 
+              title="The Price of Faith: Economic Conditions and Religious Adherence"
+              category="Development Economics"
+              year="May 2024"
+              role="Research Assistant"
+              description="Published to NBER Working Group. Analyzed survey data from 80,000+ respondents across 45 African countries to estimate the price elasticity of religious adherence using Stata and Python."
+              link="https://www.nber.org/papers/w33482"
             />
           </div>
         </section>
@@ -179,11 +200,6 @@ export default function Home() {
               <span className="text-xs font-mono uppercase tracking-wider text-accent">Engineering</span>
               <h2 className="font-serif text-4xl mt-2 mb-8">Side Projects</h2>
               <div className="space-y-6">
-                <ProjectCard 
-                  title="Portfolio Analytics"
-                  desc="Real-time investment dashboard."
-                  tags={["Next.js", "Finance API", "Tailwind"]}
-                />
                 <ProjectCard 
                   title="Vizasound"
                   desc="AI startup integrating multi-modal generative models to produce custom songs and videos."
@@ -216,18 +232,8 @@ export default function Home() {
         <section id="photography" className="p-6 md:p-10 bg-background/40">
           <div className="flex items-center justify-between mb-8">
             <h2 className="font-serif text-3xl">Photography</h2>
-            <Link href="#" className="text-sm border-b border-accent text-accent pb-0.5 hover:opacity-70 transition-opacity">View All Works</Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="aspect-[4/5] bg-muted relative group overflow-hidden cursor-pointer rounded-md shadow-sm hover:shadow-md transition-all">
-                 <div className="absolute inset-0 flex items-center justify-center text-muted-foreground group-hover:scale-105 transition-transform duration-700">
-                   <Camera className="w-6 h-6 opacity-30" />
-                 </div>
-                 <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-300"></div>
-              </div>
-            ))}
-          </div>
+          <PhotoGallery />
         </section>
 
       </main>
@@ -260,21 +266,24 @@ function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
   );
 }
 
-function ResearchItem({ title, category, year, description }: { title: string; category: string; year: string; description: string }) {
+function ResearchItem({ title, category, year, role, description, link }: { title: string; category: string; year: string; role: string; description: string; link?: string }) {
   return (
-    <div className="group flex flex-col md:flex-row md:items-baseline gap-4 p-8 md:px-12 hover:bg-white/60 dark:hover:bg-white/5 transition-colors cursor-pointer">
-       <div className="w-32 text-sm font-mono text-muted-foreground shrink-0">{year}</div>
+    <Link href={link || "#"} className="group flex flex-col md:flex-row md:items-baseline gap-4 p-8 md:px-12 hover:bg-white/60 dark:hover:bg-white/5 transition-colors cursor-pointer block">
+       <div className="w-32 shrink-0 flex flex-col gap-1">
+         <span className="text-sm font-mono text-muted-foreground">{year}</span>
+         <span className="text-xs font-medium text-accent">{role}</span>
+       </div>
        <div className="flex-1">
           <div className="flex items-center gap-3 mb-2">
              <h3 className="text-xl font-medium font-serif group-hover:text-accent transition-colors">{title}</h3>
              <ArrowUpRight className="w-4 h-4 text-accent opacity-0 group-hover:opacity-100 transition-all -translate-y-1 group-hover:translate-y-0" />
           </div>
-          <p className="text-muted-foreground max-w-2xl">{description}</p>
+          <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed">{description}</p>
        </div>
        <div className="w-48 text-xs font-mono uppercase tracking-wider text-muted-foreground text-right hidden md:block">
           {category}
        </div>
-    </div>
+    </Link>
   )
 }
 
