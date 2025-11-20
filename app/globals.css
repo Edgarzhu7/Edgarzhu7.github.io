@@ -1,19 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Warm/Paper Theme - Light Mode */
+  --background: #FDFCF8; /* Cream/Paper */
+  --foreground: #2A2927; /* Soft Charcoal */
+  --muted: #F2F0E9; /* Darker Cream */
+  --muted-foreground: #6B6962; /* Taupe Gray */
+  --border: #D6D4CD; /* Darker border for better separation (was #E6E4DD) */
+  --accent: #D95E38; /* Burnt Orange */
+  --accent-foreground: #FFFFFF;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-newsreader);
 
   /* Animations */
   --animate-blob: blob 7s infinite;
-  --animate-fade-in: fade-in 1s ease-out forwards;
+  --animate-fade-in: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
   /* Keyframes */
   @keyframes blob {
@@ -30,13 +43,38 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Warm/Paper Theme - Dark Mode */
+    --background: #1C1B19; 
+    --foreground: #EEECE5; 
+    --muted: #2A2927; 
+    --muted-foreground: #A3A199; 
+    --border: #444341; /* Stronger border in dark mode */
+    --accent: #D95E38; 
+    --accent-foreground: #FFFFFF;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-serif {
+  font-family: var(--font-serif), serif;
+}
+
+/* Stronger grid definition */
+.border-grid {
+  border-bottom: 1px solid var(--border);
+}
+.border-grid-r {
+  border-right: 1px solid var(--border);
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
 }
