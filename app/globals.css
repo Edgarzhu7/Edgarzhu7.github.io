@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  /* Warm/Paper Theme - Light Mode */
+  /* Warm/Paper Theme - Light Mode (Restored) */
   --background: #FDFCF8; /* Cream/Paper */
   --foreground: #2A2927; /* Soft Charcoal */
   --muted: #F2F0E9; /* Darker Cream */
   --muted-foreground: #6B6962; /* Taupe Gray */
-  --border: #D6D4CD; /* Darker border for better separation (was #E6E4DD) */
+  --border: #D6D4CD; /* Darker border */
   --accent: #D95E38; /* Burnt Orange */
   --accent-foreground: #FFFFFF;
+  
+  /* Spacing */
+  --radius: 0.75rem;
 }
 
 @theme inline {
@@ -22,36 +25,34 @@
   
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-newsreader);
+  --font-serif: var(--font-cormorant-garamond); 
+  --font-display: var(--font-newsreader); 
 
-  /* Animations */
-  --animate-blob: blob 7s infinite;
-  --animate-fade-in: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-
-  /* Keyframes */
-  @keyframes blob {
-    0% { transform: translate(0px, 0px) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
-    100% { transform: translate(0px, 0px) scale(1); }
+  /* Cinematic Animations */
+  --animate-fade-up: fade-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-reveal: reveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  
+  @keyframes fade-up {
+    0% { opacity: 0; transform: translateY(40px); filter: blur(4px); }
+    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
   }
-  @keyframes fade-in {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
+  
+  @keyframes reveal {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Warm/Paper Theme - Dark Mode - High Contrast */
-    --background: #10100F; 
-    --foreground: #FFFFFF; 
-    --muted: #262523; 
-    --muted-foreground: #D4D2CE; 
-    --border: #4A4946;
-    --accent: #E86E4A; 
-    --accent-foreground: #FFFFFF;
-  }
+/* Dark Mode - Applied when .dark class is on html element - High Contrast */
+:root.dark {
+  /* Warm/Paper Theme - Dark Mode - High Contrast */
+  --background: #0A0A09; /* Darker black for better contrast */
+  --foreground: #FAFAF9; /* Brighter white for better readability */
+  --muted: #1F1E1D; /* Slightly lighter than background for sections */
+  --muted-foreground: #E8E6E3; /* Lighter gray for better contrast */
+  --border: #3A3937; /* More visible borders */
+  --accent: #F56B4D; /* Brighter accent for better visibility */
+  --accent-foreground: #FFFFFF;
 }
 
 body {
@@ -60,11 +61,34 @@ body {
   font-family: var(--font-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+h1 {
+  letter-spacing: -0.02em;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* Utility Classes */
 .font-serif {
   font-family: var(--font-serif), serif;
 }
+
 .font-didot {
   font-family: Didot, "Didot LT STD", "Bodoni MT", "Noto Serif Display", serif;
 }
@@ -73,15 +97,10 @@ body {
   font-family: var(--font-cormorant-garamond), serif;
 }
 
-/* Stronger grid definition */
-.border-grid {
-  border-bottom: 1px solid var(--border);
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
 }
-.border-grid-r {
-  border-right: 1px solid var(--border);
-}
-
-::selection {
-  background-color: var(--accent);
-  color: var(--accent-foreground);
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }

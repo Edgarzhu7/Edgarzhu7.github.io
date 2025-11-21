@@ -57,7 +57,6 @@ const photoCollections = [
 ];
 
 export function PhotoGallery() {
-  // State to track which section is open (null means all closed)
   const [openLocation, setOpenLocation] = useState<string | null>(null);
 
   const toggleLocation = (location: string) => {
@@ -65,41 +64,42 @@ export function PhotoGallery() {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-0 divide-y divide-border">
       {photoCollections.map((collection) => {
         const isOpen = openLocation === collection.location;
         
         return (
-          <div key={collection.location} className="border-b border-border last:border-0">
+          <div key={collection.location} className="group">
             {/* Accordion Header */}
             <button 
               onClick={() => toggleLocation(collection.location)}
-              className="w-full py-6 flex items-center justify-between group text-left focus:outline-none"
+              className="w-full py-8 flex items-center justify-between group text-left focus:outline-none"
             >
-              <h3 className="font-serif text-xl text-foreground/80 group-hover:text-accent transition-colors flex items-center gap-3">
-                <span className={`w-1.5 h-1.5 rounded-full transition-colors ${isOpen ? 'bg-accent' : 'bg-muted-foreground/50 group-hover:bg-accent'}`}></span>
-                {collection.location}
+              <h3 className="font-serif text-2xl md:text-3xl text-foreground/80 group-hover:text-foreground transition-colors flex items-center gap-4 font-light">
+                <span className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${isOpen ? 'bg-accent shadow-[0_0_10px_rgba(217,94,56,0.5)]' : 'bg-muted-foreground/30 group-hover:bg-accent'}`}></span>
+                <span className={isOpen ? 'italic' : ''}>{collection.location}</span>
               </h3>
-              <ChevronDown 
-                className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${isOpen ? 'rotate-180 text-accent' : ''}`} 
-              />
+              <span className={`text-xs font-mono uppercase tracking-widest text-muted-foreground transition-all duration-500 ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
+                {collection.images.length} Photos
+              </span>
             </button>
 
             {/* Accordion Content */}
             <div 
-              className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[2000px] opacity-100 pb-8' : 'max-h-0 opacity-0'}`}
+              className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? 'max-h-[2000px] opacity-100 pb-12' : 'max-h-0 opacity-0'}`}
             >
-              <div className="flex flex-wrap gap-4">
+              {/* Horizontal Scroll Container for Cinematic feel */}
+              <div className="flex gap-6 overflow-x-auto pb-4 -mx-6 px-6 md:-mx-0 md:px-0 scrollbar-hide">
                 {collection.images.map((src, idx) => (
-                  <div key={idx} className="relative h-[200px] w-auto shrink-0 group rounded-sm overflow-hidden bg-muted/20">
+                  <div key={idx} className="relative h-[400px] min-w-[300px] md:h-[500px] md:min-w-[400px] shrink-0 group/image rounded-sm overflow-hidden bg-muted">
                     <Image
                       src={src}
                       alt={`${collection.location} photo ${idx + 1}`}
-                      width={400}
-                      height={600}
-                      className="h-full w-auto object-contain transition-transform duration-700 group-hover:scale-105"
-                      sizes="300px"
+                      fill
+                      className="object-cover transition-transform duration-1000 ease-out group-hover/image:scale-105"
+                      sizes="(max-width: 768px) 80vw, 400px"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500"></div>
                   </div>
                 ))}
               </div>
