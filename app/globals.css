@@ -65,6 +65,13 @@ body {
 .font-serif {
   font-family: var(--font-serif), serif;
 }
+.font-didot {
+  font-family: Didot, "Didot LT STD", "Bodoni MT", "Noto Serif Display", serif;
+}
+
+.font-cormorant {
+  font-family: var(--font-cormorant-garamond), serif;
+}
 
 /* Stronger grid definition */
 .border-grid {

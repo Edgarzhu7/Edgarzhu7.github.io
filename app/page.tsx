@@ -47,7 +47,7 @@ export default function Home() {
         <section className="grid md:grid-cols-2 gap-0 border-b border-border/40">
           <div className="p-10 md:p-20 flex flex-col justify-center space-y-8 border-b md:border-b-0 border-border/40 bg-background/30">
             <div className="space-y-6 animate-fade-in">
-              <h1 className="font-serif text-5xl md:text-7xl leading-[1.1] text-foreground drop-shadow-sm">
+              <h1 className="font-cormorant text-5xl md:text-7xl leading-[1.1] text-foreground drop-shadow-sm">
                 Syntax. <br/>
                 Systems. <br/>
                 <span className="italic text-accent/90">Soul.</span> 
@@ -158,8 +158,8 @@ export default function Home() {
         <FadeIn>
         <section id="research" className="border-b border-border/40 bg-background/30">
           <div className="p-10 md:p-12 border-b border-border/40">
-            <span className="text-xs font-mono uppercase tracking-wider text-accent">Selected Works</span>
-            <h2 className="font-serif text-4xl mt-2">Research & Analysis</h2>
+            {/* <span className="text-xs font-mono uppercase tracking-wider text-accent">Selected Works</span> */}
+            <h2 className="font-didot text-4xl mt-2">research</h2>
           </div>
           
           <div className="divide-y divide-border/40">
@@ -203,8 +203,8 @@ export default function Home() {
         <FadeIn>
         <section id="projects" className="grid md:grid-cols-2 border-b border-border">
            <div className="p-10 md:p-12 border-b md:border-b-0 border-r border-border bg-background/40">
-              <span className="text-xs font-mono uppercase tracking-wider text-accent">Engineering</span>
-              <h2 className="font-serif text-4xl mt-2 mb-8">Side Projects</h2>
+              {/* <span className="text-xs font-mono uppercase tracking-wider text-accent">Engineering</span> */}
+              <h2 className="font-didot text-4xl mt-2 mb-8"> projects</h2>
               <div className="space-y-6">
                 <ProjectCard 
                   title="Vizasound"
@@ -222,8 +222,8 @@ export default function Home() {
            </div>
            <div className="bg-muted/30 p-10 md:p-12 flex flex-col justify-between backdrop-blur-sm">
               <div>
-                <span className="text-xs font-mono uppercase tracking-wider text-accent">Interests</span>
-                <h2 className="font-serif text-4xl mt-2 mb-8">Passions</h2>
+                {/* <span className="text-xs font-mono uppercase tracking-wider text-accent">Interests</span> */}
+                <h2 className="font-didot text-4xl mt-2 mb-8">passions</h2>
                 <ul className="space-y-4">
                   <InterestItem title="Artificial Intelligence" />
                   <InterestItem title="Film & Cinema" />
@@ -245,7 +245,7 @@ export default function Home() {
         <FadeIn>
         <section id="photography" className="p-6 md:p-10 bg-background/40">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="font-serif text-3xl">Photography</h2>
+            <h2 className="font-didot text-3xl">photography</h2>
         </div>
           <PhotoGallery />
         </section>
