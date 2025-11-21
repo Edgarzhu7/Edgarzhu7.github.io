@@ -43,13 +43,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Warm/Paper Theme - Dark Mode */
-    --background: #1C1B19; 
-    --foreground: #EEECE5; 
-    --muted: #2A2927; 
-    --muted-foreground: #A3A199; 
-    --border: #444341; /* Stronger border in dark mode */
-    --accent: #D95E38; 
+    /* Warm/Paper Theme - Dark Mode - High Contrast */
+    --background: #10100F; 
+    --foreground: #FFFFFF; 
+    --muted: #262523; 
+    --muted-foreground: #D4D2CE; 
+    --border: #4A4946;
+    --accent: #E86E4A; 
     --accent-foreground: #FFFFFF;
   }
 }

@@ -106,7 +106,7 @@ export default function Home() {
             <div className="relative z-10 space-y-4 max-w-md text-muted-foreground leading-relaxed animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <p className="text-lg">
                   Hi, I'm <span className="font-semibold text-foreground">Edgar Zhu</span>. 
-                  I'm a senior at the <span className="text-[#00274C] font-medium">University of Michigan</span> (Go Blue! 〽️), originally from Shenzhen, China.
+                  I'm a senior at the <span className="text-[#00274C] dark:text-[#FFCB05] font-medium">University of Michigan</span> (Go Blue! 〽️), originally from Shenzhen, China.
                 </p>
                 <p>
                   My passion lies in building <span className="italic">efficient, human-centered AI systems</span> that solve real-world problems. I've previously interned at <span className="font-medium text-foreground">Tencent</span> twice, gaining deep industry insights.
