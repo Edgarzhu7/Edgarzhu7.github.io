@@ -134,7 +134,7 @@ export default function Home() {
 
             {/* Right Column: Bio & Avatar */}
             <div className="relative opacity-0 animate-fade-up" style={{ animationDelay: '1.0s' }}>
-              <div className="bg-white/40 dark:bg-black/20 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-white/20 shadow-sm">
+              <div className={`${isDark ? 'bg-black/20 backdrop-blur-md' : ''} p-8 md:p-10 rounded-2xl ${isDark ? 'border border-white/20 shadow-sm' : 'border border-border/30'}`}>
                 <div className="flex flex-col gap-6">
                   {/* Header with Avatar */}
                   <div className="flex items-center gap-6 border-b border-foreground/10 pb-6">
@@ -155,7 +155,7 @@ export default function Home() {
                   {/* Bio Text */}
                   <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed font-light">
                      <p>
-                       I'm a senior at the <span className="text-[#00274C] dark:text-[#FFCB05] font-medium">University of Michigan</span> (Go Blue! 〽️), originally from Shenzhen, China.
+                       I'm a senior at the <span className={`${isDark ? 'text-[#FFCB05]' : 'text-[#00274C]'} font-medium`}>University of Michigan</span> (Go Blue! 〽️), originally from Shenzhen, China.
                      </p>
                      <p>
                        My passion lies in building <span className="italic text-foreground">efficient, human-centered AI systems</span> that solve real-world problems. I've previously interned at <span className="font-medium text-foreground">Tencent</span> twice.
